@@ -12,20 +12,24 @@ namespace Xamarin_Forms_Task
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        public ObservableCollection<Animal> Animals { get; set; }
+        //public ObservableCollection<Animal> Animals { get; set; }
+        public AnimalsCollection Animals { get; set; }
+        public ObservableCollection<Animal> AnimalsCol { get; set; }
         public MainPage()   
         {
             InitializeComponent();
-            Animals = new ObservableCollection<Animal>
-            {
-                new Animal { Name = "John", ImageUrl = "e.jpg"}
-            };
+            Animals = AnimalsCollection.getInstanse();
+            AnimalsCol = AnimalsCollection.getInstanse().Animals;
             BindingContext = this;
-        }     
+        }
+        private void AnimalTaped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddPage());
+        }
         private void OnButtonClick(object sender, EventArgs e)
         {
-            Animals.Add(new Animal { Name = "Oleg", ImageUrl = "a.jpg" });
-            //Navigation.PushAsync(new AddPage());
+            //Animals.Animals.Add(new Animal { Name = "Oleg", ImageUrl = "a.jpg" });
+            Navigation.PushAsync(new AddPage());
         }
     }
 }

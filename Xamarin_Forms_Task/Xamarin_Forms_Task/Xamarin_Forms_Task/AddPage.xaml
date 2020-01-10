@@ -6,10 +6,26 @@
              mc:Ignorable="d"
              x:Class="Xamarin_Forms_Task.AddPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            
+            <Grid.ColumnDefinitions Width="*"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Entry Grid.Column="0" Grid.Row="0"
+                   x:Name="nameEntry"
+                   Placeholder="Name" 
+                   Completed="nameEntryCompleted"/>
+            <Entry Grid.Column="0" Grid.Row="1"
+                   x:Name="imageUrlEntry"
+                   Placeholder="ImageUrl"
+                   Completed="imageUrlEntryCompleted"/>
+            <Button Grid.Column="0" Grid.Row="2"
+                    Text="Save"
+                    Clicked="saveButtonClicked"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

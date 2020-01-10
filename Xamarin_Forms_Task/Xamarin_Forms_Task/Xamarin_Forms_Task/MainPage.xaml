@@ -23,11 +23,11 @@
                     VerticalOptions="CenterAndExpand"
                     Clicked="OnButtonClick"/>
         </StackLayout>
-        <CollectionView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Animals}">
+        <CollectionView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding AnimalsCol}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="10">
-                        
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="150"/>
                             <ColumnDefinition Width="*"/>
@@ -35,17 +35,25 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="150"/>
                         </Grid.RowDefinitions>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="AnimalTaped"/>
+                        </Grid.GestureRecognizers>
                         
-                        <Image Grid.Row="0" 
-                               Grid.Column="0"
+                        <Frame Grid.Row="0" Grid.Column="0"
+                               Padding="0"                              
                                HeightRequest="150"
                                WidthRequest="150"
+                               CornerRadius="100"
+                               IsClippedToBounds="True">
+                            <Image
+                               Aspect="AspectFill"
                                Source="{Binding ImageUrl}"/>
+                        </Frame>
                         
-                        <Label Grid.Row="0"
-                               Grid.Column="1"
-                               Margin="5"
-                               FontSize="Large"
+                        <Label Grid.Row="0" Grid.Column="1"
+                               Margin="10"
+                               FontSize="35"
+                               VerticalTextAlignment="Center"
                                Text="{Binding Name}"/>
                     </Grid>
                 </DataTemplate>

@@ -17,5 +17,11 @@ namespace Xamarin_Forms_Task
             get { return imageUrl; }
             set { imageUrl = value; }
         }
+
+        public Animal()
+        {
+            name = "";
+            imageUrl = "";
+        }
     }
 }
