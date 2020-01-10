@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Xamarin_Forms_Task.MainPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="#d57799" Grid.Column="0" Grid.Row="0">
+            <Button Text="+" FontSize="30" TextColor="#535353"
+                    Padding="0"
+                    WidthRequest="50"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Clicked="OnButtonClick"/>
+        </StackLayout>
+        <CollectionView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Animals}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10">
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Image Grid.Row="0" 
+                               Grid.Column="0"
+                               HeightRequest="150"
+                               WidthRequest="150"
+                               Source="{Binding ImageUrl}"/>
+                        
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               Margin="5"
+                               FontSize="Large"
+                               Text="{Binding Name}"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>
