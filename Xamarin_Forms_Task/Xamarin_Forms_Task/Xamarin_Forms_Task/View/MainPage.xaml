@@ -23,7 +23,10 @@
                     VerticalOptions="CenterAndExpand"
                     Clicked="OnButtonClick"/>
         </StackLayout>
-        <CollectionView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding AnimalsCol}">
+        <CollectionView Grid.Column="0" Grid.Row="1" 
+                        ItemsSource="{Binding AnimalsCol}"
+                        SelectionMode="Single"
+                        SelectionChanged="AnimalTapped">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="10">
@@ -35,10 +38,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="150"/>
                         </Grid.RowDefinitions>
-                        <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="AnimalTaped"/>
-                        </Grid.GestureRecognizers>
-                        
+
                         <Frame Grid.Row="0" Grid.Column="0"
                                Padding="0"                              
                                HeightRequest="150"

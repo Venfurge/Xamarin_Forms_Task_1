@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
@@ -22,9 +23,10 @@ namespace Xamarin_Forms_Task
             Animals = AnimalsCollection.getInstanse();
             AnimalsCol = AnimalsCollection.getInstanse().Animals;
         }
-        public void AnimalTaped(object sender, EventArgs e)
+        public void AnimalTaped(object sender, SelectionChangedEventArgs e)
         {
-            Navigation.PushAsync(new AddPage(Animals.Animals[0]));
+            Animal temp = (Animal)(e.CurrentSelection.FirstOrDefault());
+            Navigation.PushAsync(new AddPage(AnimalsCol[AnimalsCol.IndexOf(temp)]));
         }
         public void OnButtonClick(object sender, EventArgs e)
         {

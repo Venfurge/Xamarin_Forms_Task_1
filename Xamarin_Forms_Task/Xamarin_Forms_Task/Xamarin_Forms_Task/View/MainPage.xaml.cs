@@ -17,7 +17,7 @@ namespace Xamarin_Forms_Task
             InitializeComponent();
             BindingContext = new MainPageVM(Navigation);
         }
-        private void AnimalTaped(object sender, EventArgs e)
+        private void AnimalTapped(object sender, SelectionChangedEventArgs e)
         {
             ((MainPageVM)BindingContext).AnimalTaped(sender, e);
         }
