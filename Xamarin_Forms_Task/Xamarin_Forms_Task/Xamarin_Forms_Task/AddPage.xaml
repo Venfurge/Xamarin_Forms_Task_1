@@ -6,8 +6,8 @@
              mc:Ignorable="d"
              x:Class="Xamarin_Forms_Task.AddPage">
     <ContentPage.Content>
-        <Grid>
-            
+        <Grid Padding="10">
+
             <Grid.ColumnDefinitions Width="*"/>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>

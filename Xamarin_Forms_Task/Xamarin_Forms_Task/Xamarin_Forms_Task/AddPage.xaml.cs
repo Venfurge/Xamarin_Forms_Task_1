@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,44 +13,31 @@ namespace Xamarin_Forms_Task
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddPage : ContentPage
     {
-        public AnimalsCollection Animals { get; set; }
-        public bool Visibility { get; set; }
-        public bool Enability { get; set; }
-        public Animal animal { get; set; }
         public AddPage()
         {
-            Visibility = true;
-            Enability = false;
             InitializeComponent();
-            Animals = AnimalsCollection.getInstanse();
-            animal = new Animal();
-            BindingContext = this;
+            BindingContext = new AddPageVM(Navigation);
         }
         public AddPage(Animal animal)
         {
-            Visibility = false;
-            Enability = true;
             InitializeComponent();
-            Animals = AnimalsCollection.getInstanse();
-            BindingContext = this;
+            BindingContext = new AddPageVM(animal, Navigation);
         }
         private void nameEntryCompleted(object sender, EventArgs e)
         {
-            animal.Name = ((Entry)sender).Text;
+            ((AddPageVM)BindingContext).nameEntryCompleted(sender, e);
         }
         private void imageUrlEntryCompleted(object sender, EventArgs e)
         {
-            animal.ImageUrl = ((Entry)sender).Text;
-        }    
+            ((AddPageVM)BindingContext).imageUrlEntryCompleted(sender, e);
+        }
         private void saveButtonClicked(object sender, EventArgs e)
         {
-            Animals.Animals.Add(animal);
-            Navigation.PopAsync();
+            ((AddPageVM)BindingContext).saveButtonClicked(sender, e);
         }
         private void deleteButtonClicked(object sender, EventArgs e)
         {
-            Animals.Animals.Remove(animal);
-            Navigation.PopAsync();
+            ((AddPageVM)BindingContext).deleteButtonClicked(sender, e);
         }
     }
 }

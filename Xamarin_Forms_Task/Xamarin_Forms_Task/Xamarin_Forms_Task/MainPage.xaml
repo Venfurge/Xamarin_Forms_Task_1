@@ -46,11 +46,13 @@
                                CornerRadius="100"
                                IsClippedToBounds="True">
                             <Image
+                               x:Name="imageToBind"
                                Aspect="AspectFill"
                                Source="{Binding ImageUrl}"/>
                         </Frame>
                         
                         <Label Grid.Row="0" Grid.Column="1"
+                               x:Name="nameToBind"
                                Margin="10"
                                FontSize="35"
                                VerticalTextAlignment="Center"

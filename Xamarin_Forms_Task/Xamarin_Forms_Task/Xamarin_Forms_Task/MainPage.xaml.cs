@@ -24,7 +24,6 @@ namespace Xamarin_Forms_Task
         }
         private void AnimalTaped(object sender, EventArgs e)
         {
-            
             Navigation.PushAsync(new AddPage(Animals.Animals[0]));
         }
         private void OnButtonClick(object sender, EventArgs e)
