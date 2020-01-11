@@ -17,6 +17,11 @@
 
             <Label Grid.Column="0" Grid.Row="0"
                    Text="{Binding Name}"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center"
+                   TextDecorations="Underline"
+                   TextColor="#000000"
+                   FontSize="Large"
                    IsVisible="{Binding Enability}"
                    IsEnabled="{Binding Enability}"/>
             <Image Grid.Column="0" Grid.Row="1"
