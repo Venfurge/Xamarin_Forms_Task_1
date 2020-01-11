@@ -15,16 +15,35 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
+            <Label Grid.Column="0" Grid.Row="0"
+                   Text="{Binding Name}"
+                   IsVisible="{Binding Enability}"
+                   IsEnabled="{Binding Enability}"/>
+            <Image Grid.Column="0" Grid.Row="1"
+                   Source="{Binding ImageUrl}"
+                   IsVisible="{Binding Enability}"
+                   IsEnabled="{Binding Enability}"/>
+            <Button Grid.Column="0" Grid.Row="2"
+                    Text="Delete"
+                    Clicked="deleteButtonClicked"
+                    IsVisible="{Binding Enability}"
+                    IsEnabled="{Binding Enability}"/>
             <Entry Grid.Column="0" Grid.Row="0"
                    x:Name="nameEntry"
                    Placeholder="Name" 
+                   IsEnabled="{Binding Visibility}"
+                   IsVisible="{Binding Visibility}"
                    Completed="nameEntryCompleted"/>
             <Entry Grid.Column="0" Grid.Row="1"
                    x:Name="imageUrlEntry"
                    Placeholder="ImageUrl"
+                   IsEnabled="{Binding Visibility}"
+                   IsVisible="{Binding Visibility}"
                    Completed="imageUrlEntryCompleted"/>
             <Button Grid.Column="0" Grid.Row="2"
                     Text="Save"
+                    IsEnabled="{Binding Visibility}"
+                    IsVisible="{Binding Visibility}"
                     Clicked="saveButtonClicked"/>
         </Grid>
     </ContentPage.Content>

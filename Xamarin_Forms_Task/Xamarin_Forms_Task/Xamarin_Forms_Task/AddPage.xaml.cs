@@ -14,18 +14,24 @@ namespace Xamarin_Forms_Task
     {
         public AnimalsCollection Animals { get; set; }
         public bool Visibility { get; set; }
+        public bool Enability { get; set; }
         public Animal animal { get; set; }
         public AddPage()
         {
-            Visibility = false;
+            Visibility = true;
+            Enability = false;
             InitializeComponent();
             Animals = AnimalsCollection.getInstanse();
             animal = new Animal();
+            BindingContext = this;
         }
         public AddPage(Animal animal)
         {
-            Visibility = true;
+            Visibility = false;
+            Enability = true;
             InitializeComponent();
+            Animals = AnimalsCollection.getInstanse();
+            BindingContext = this;
         }
         private void nameEntryCompleted(object sender, EventArgs e)
         {
@@ -38,6 +44,11 @@ namespace Xamarin_Forms_Task
         private void saveButtonClicked(object sender, EventArgs e)
         {
             Animals.Animals.Add(animal);
+            Navigation.PopAsync();
+        }
+        private void deleteButtonClicked(object sender, EventArgs e)
+        {
+            Animals.Animals.Remove(animal);
             Navigation.PopAsync();
         }
     }
