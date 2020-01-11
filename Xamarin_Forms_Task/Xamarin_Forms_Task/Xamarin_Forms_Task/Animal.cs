@@ -10,12 +10,12 @@ namespace Xamarin_Forms_Task
         private string name, imageUrl;
         public string Name
         {
-            get { return name; }
+            get => name;
             set { name = value; }
         }
         public string ImageUrl
         {
-            get { return imageUrl; }
+            get => imageUrl;
             set { imageUrl = value; }
         }
 
