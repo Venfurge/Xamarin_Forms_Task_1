@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Xamarin_Forms_Task
@@ -18,6 +19,8 @@ namespace Xamarin_Forms_Task
         public bool Visibility { get; set; }
         public bool Enability { get; set; }
         public Animal Animal { get; set; }
+        public ICommand SaveAnimalCommand { get; set; }
+        public ICommand DeleteAnimalCommand { get; set; }
         public string Name
         {
             get => Animal.Name;
@@ -44,6 +47,8 @@ namespace Xamarin_Forms_Task
             AnimalsCol = Animals.Animals;
             Navigation = navigation;
             Animal = new Animal();
+            SaveAnimalCommand = new Command(SaveAnimal);
+            DeleteAnimalCommand = null;
         }
 
         public AddPageVM(Animal Animal, INavigation navigation)
@@ -56,24 +61,22 @@ namespace Xamarin_Forms_Task
             this.Animal = Animal;
             OnPropertyChanged("Name");
             OnPropertyChanged("ImageUrl");
+            DeleteAnimalCommand = new Command(DeleteAnimal);
+            SaveAnimalCommand = null;
         }
-        public void nameEntryCompleted(object sender, EventArgs e)
-        {
-            Animal.Name = ((Entry)sender).Text;
-        }
-        public void imageUrlEntryCompleted(object sender, EventArgs e)
-        {
-            Animal.ImageUrl = ((Entry)sender).Text;
-        }
-        public void saveButtonClicked(object sender, EventArgs e)
+        private void SaveAnimal(object sender)
         {
             Animals.Animals.Add(Animal);
             Navigation.PopAsync();
         }
-        public void deleteButtonClicked(object sender, EventArgs e)
+        private void DeleteAnimal()
         {
             Animals.Animals.Remove(Animal);
             Navigation.PopAsync();
+        }
+        private void NameEntry(object sender, EventArgs e)
+        {
+            Animal.Name = ((Entry)sender).Text;
         }
     }
 }

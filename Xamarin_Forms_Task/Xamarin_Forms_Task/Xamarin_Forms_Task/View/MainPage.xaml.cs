@@ -9,7 +9,6 @@ using Xamarin.Forms;
 
 namespace Xamarin_Forms_Task
 {
-    //Comment
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
@@ -17,14 +16,6 @@ namespace Xamarin_Forms_Task
         {
             InitializeComponent();
             BindingContext = new MainPageVM(Navigation);
-        }
-        private void AnimalTapped(object sender, SelectionChangedEventArgs e)
-        {
-            ((MainPageVM)BindingContext).AnimalTaped(sender, e);
-        }
-        private void OnButtonClick(object sender, EventArgs e)
-        {
-            ((MainPageVM)BindingContext).OnButtonClick(sender, e);
         }
     }
 }

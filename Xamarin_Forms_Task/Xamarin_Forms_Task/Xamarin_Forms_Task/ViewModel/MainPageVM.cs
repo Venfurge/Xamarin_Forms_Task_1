@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Xamarin_Forms_Task
@@ -16,21 +17,38 @@ namespace Xamarin_Forms_Task
         public INavigation Navigation { get; set; }
         public AnimalsCollection Animals { get; set; }
         public ObservableCollection<Animal> AnimalsCol { get; set; }
+        public ICommand CreateAnimalCommand { get; set; }
+        public ICommand AnimalTapCommand { get; set; }
 
+        private Animal selectedAnimal;
         public MainPageVM(INavigation navigation)
         {
             Navigation = navigation;
             Animals = AnimalsCollection.getInstanse();
             AnimalsCol = AnimalsCollection.getInstanse().Animals;
+            CreateAnimalCommand = new Command(CreateAnimal);
+            AnimalTapCommand = new Command(AnimalTap);
         }
-        public void AnimalTaped(object sender, SelectionChangedEventArgs e)
+
+        public Animal SelectedAnimal
         {
-            Animal temp = (Animal)(e.CurrentSelection.FirstOrDefault());
-            Navigation.PushAsync(new AddPage(AnimalsCol[AnimalsCol.IndexOf(temp)]));
+            get => selectedAnimal;
+            set
+            {
+                selectedAnimal = value;
+                OnPropertyChanged("SelectedAnimal");
+            }
         }
-        public void OnButtonClick(object sender, EventArgs e)
+        private void CreateAnimal()
         {
             Navigation.PushAsync(new AddPage());
+        }
+        private void AnimalTap()
+        {
+            if (SelectedAnimal == null)
+                return;
+            Navigation.PushAsync(new AddPage(SelectedAnimal));
+            SelectedAnimal = null;
         }
     }
 }

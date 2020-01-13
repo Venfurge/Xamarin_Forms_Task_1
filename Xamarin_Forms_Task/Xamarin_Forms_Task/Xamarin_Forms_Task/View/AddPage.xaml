@@ -29,27 +29,25 @@
                    IsVisible="{Binding Enability}"
                    IsEnabled="{Binding Enability}"/>
             <Button Grid.Column="0" Grid.Row="2"
-                    Text="Delete"
-                    Clicked="deleteButtonClicked"
-                    IsVisible="{Binding Enability}"
-                    IsEnabled="{Binding Enability}"/>
+                   Text="Delete"
+                   IsVisible="{Binding Enability}"
+                   IsEnabled="{Binding Enability}"
+                   Command="{Binding DeleteAnimalCommand}"/>
             <Entry Grid.Column="0" Grid.Row="0"
-                   x:Name="nameEntry"
                    Placeholder="Name" 
                    IsEnabled="{Binding Visibility}"
                    IsVisible="{Binding Visibility}"
-                   Completed="nameEntryCompleted"/>
+                   Text="{Binding Name}" />
             <Entry Grid.Column="0" Grid.Row="1"
-                   x:Name="imageUrlEntry"
                    Placeholder="ImageUrl"
                    IsEnabled="{Binding Visibility}"
                    IsVisible="{Binding Visibility}"
-                   Completed="imageUrlEntryCompleted"/>
+                   Text="{Binding ImageUrl}"/>
             <Button Grid.Column="0" Grid.Row="2"
-                    Text="Save"
-                    IsEnabled="{Binding Visibility}"
-                    IsVisible="{Binding Visibility}"
-                    Clicked="saveButtonClicked"/>
+                   Text="Save"
+                   IsEnabled="{Binding Visibility}"
+                   IsVisible="{Binding Visibility}"
+                   Command="{Binding SaveAnimalCommand}"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

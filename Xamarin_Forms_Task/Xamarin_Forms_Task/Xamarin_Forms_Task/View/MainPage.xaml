@@ -21,12 +21,14 @@
                     BackgroundColor="Transparent"
                     HorizontalOptions="EndAndExpand"
                     VerticalOptions="CenterAndExpand"
-                    Clicked="OnButtonClick"/>
+                    Command="{Binding CreateAnimalCommand}"/>
         </StackLayout>
         <CollectionView Grid.Column="0" Grid.Row="1" 
                         ItemsSource="{Binding AnimalsCol}"
                         SelectionMode="Single"
-                        SelectionChanged="AnimalTapped">
+                        SelectedItem="{Binding SelectedAnimal}"
+                        SelectionChangedCommand="{Binding AnimalTapCommand}">
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid Padding="10">
@@ -50,7 +52,7 @@
                                Aspect="AspectFill"
                                Source="{Binding ImageUrl}"/>
                         </Frame>
-                        
+
                         <Label Grid.Row="0" Grid.Column="1"
                                x:Name="nameToBind"
                                Margin="10"

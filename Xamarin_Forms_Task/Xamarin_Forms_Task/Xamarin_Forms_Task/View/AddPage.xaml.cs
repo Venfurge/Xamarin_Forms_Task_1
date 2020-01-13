@@ -23,21 +23,5 @@ namespace Xamarin_Forms_Task
             InitializeComponent();
             BindingContext = new AddPageVM(animal, Navigation);
         }
-        private void nameEntryCompleted(object sender, EventArgs e)
-        {
-            ((AddPageVM)BindingContext).nameEntryCompleted(sender, e);
-        }
-        private void imageUrlEntryCompleted(object sender, EventArgs e)
-        {
-            ((AddPageVM)BindingContext).imageUrlEntryCompleted(sender, e);
-        }
-        private void saveButtonClicked(object sender, EventArgs e)
-        {
-            ((AddPageVM)BindingContext).saveButtonClicked(sender, e);
-        }
-        private void deleteButtonClicked(object sender, EventArgs e)
-        {
-            ((AddPageVM)BindingContext).deleteButtonClicked(sender, e);
-        }
     }
 }
