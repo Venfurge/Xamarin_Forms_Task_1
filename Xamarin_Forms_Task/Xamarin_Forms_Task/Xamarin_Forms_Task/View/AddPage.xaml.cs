@@ -13,15 +13,15 @@ namespace Xamarin_Forms_Task
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddPage : ContentPage
     {
-        public AddPage()
+        public AddPage(ObservableCollection<Animal> AnimalsCol)
         {
             InitializeComponent();
-            BindingContext = new AddPageVM(Navigation);
+            BindingContext = new AddPageVM(AnimalsCol, Navigation);
         }
-        public AddPage(Animal animal)
+        public AddPage(Animal animal, ObservableCollection<Animal> AnimalsCol)
         {
             InitializeComponent();
-            BindingContext = new AddPageVM(animal, Navigation);
+            BindingContext = new AddPageVM(animal, AnimalsCol, Navigation);
         }
     }
 }

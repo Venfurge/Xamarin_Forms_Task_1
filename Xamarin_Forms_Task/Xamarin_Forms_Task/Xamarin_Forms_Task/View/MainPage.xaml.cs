@@ -12,10 +12,12 @@ namespace Xamarin_Forms_Task
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        public ObservableCollection<Animal> Animals { get; set; }
         public MainPage()   
         {
             InitializeComponent();
-            BindingContext = new MainPageVM(Navigation);
+            Animals = new ObservableCollection<Animal>();
+            BindingContext = new MainPageVM(Navigation, Animals);
         }
     }
 }

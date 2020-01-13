@@ -13,12 +13,11 @@ namespace Xamarin_Forms_Task
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string prop = "")
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        public INavigation Navigation { get; set; }
-        public AnimalsCollection Animals { get; set; }
         public ObservableCollection<Animal> AnimalsCol { get; set; }
         public bool Visibility { get; set; }
         public bool Enability { get; set; }
         public Animal Animal { get; set; }
+        public INavigation Navigation { get; set; }
         public ICommand SaveAnimalCommand { get; set; }
         public ICommand DeleteAnimalCommand { get; set; }
         public string Name
@@ -39,25 +38,22 @@ namespace Xamarin_Forms_Task
                 OnPropertyChanged("ImageUrl");
             }
         }
-        public AddPageVM(INavigation navigation)
+        public AddPageVM(ObservableCollection<Animal> Animals, INavigation navigation)
         {
             Visibility = true;
             Enability = false;
-            Animals = AnimalsCollection.getInstanse();
-            AnimalsCol = Animals.Animals;
+            AnimalsCol = Animals;
             Navigation = navigation;
             Animal = new Animal();
             SaveAnimalCommand = new Command(SaveAnimal);
             DeleteAnimalCommand = null;
         }
-
-        public AddPageVM(Animal Animal, INavigation navigation)
+        public AddPageVM(Animal Animal, ObservableCollection<Animal> Animals, INavigation navigation)
         {
             Visibility = false;
             Enability = true;
-            Animals = AnimalsCollection.getInstanse();
             Navigation = navigation;
-            AnimalsCol = Animals.Animals;
+            AnimalsCol = Animals;
             this.Animal = Animal;
             OnPropertyChanged("Name");
             OnPropertyChanged("ImageUrl");
@@ -66,17 +62,13 @@ namespace Xamarin_Forms_Task
         }
         private void SaveAnimal(object sender)
         {
-            Animals.Animals.Add(Animal);
+            AnimalsCol.Add(Animal);
             Navigation.PopAsync();
         }
         private void DeleteAnimal()
         {
-            Animals.Animals.Remove(Animal);
+            AnimalsCol.Remove(Animal);
             Navigation.PopAsync();
-        }
-        private void NameEntry(object sender, EventArgs e)
-        {
-            Animal.Name = ((Entry)sender).Text;
         }
     }
 }

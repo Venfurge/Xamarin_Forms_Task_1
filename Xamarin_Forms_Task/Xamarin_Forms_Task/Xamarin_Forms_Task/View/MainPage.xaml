@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackLayout BackgroundColor="#d57799" Grid.Column="0" Grid.Row="0">
-            <Button Text="+" FontSize="30" TextColor="#535353"
+            <Button Text="+" FontSize="30" TextColor="#535353"          
                     Padding="0"
                     WidthRequest="50"
                     BackgroundColor="Transparent"

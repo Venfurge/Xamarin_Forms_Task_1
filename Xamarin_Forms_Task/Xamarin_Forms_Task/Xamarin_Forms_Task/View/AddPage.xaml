@@ -37,7 +37,7 @@
                    Placeholder="Name" 
                    IsEnabled="{Binding Visibility}"
                    IsVisible="{Binding Visibility}"
-                   Text="{Binding Name}" />
+                   Text="{Binding Name}"/>
             <Entry Grid.Column="0" Grid.Row="1"
                    Placeholder="ImageUrl"
                    IsEnabled="{Binding Visibility}"

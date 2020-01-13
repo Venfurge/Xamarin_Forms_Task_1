@@ -14,18 +14,16 @@ namespace Xamarin_Forms_Task
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged(string prop = "")
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        public INavigation Navigation { get; set; }
-        public AnimalsCollection Animals { get; set; }
         public ObservableCollection<Animal> AnimalsCol { get; set; }
+        public INavigation Navigation { get; set; }
         public ICommand CreateAnimalCommand { get; set; }
         public ICommand AnimalTapCommand { get; set; }
 
         private Animal selectedAnimal;
-        public MainPageVM(INavigation navigation)
+        public MainPageVM(INavigation navigation, ObservableCollection<Animal> Animals)
         {
             Navigation = navigation;
-            Animals = AnimalsCollection.getInstanse();
-            AnimalsCol = AnimalsCollection.getInstanse().Animals;
+            AnimalsCol = Animals;
             CreateAnimalCommand = new Command(CreateAnimal);
             AnimalTapCommand = new Command(AnimalTap);
         }
@@ -41,13 +39,13 @@ namespace Xamarin_Forms_Task
         }
         private void CreateAnimal()
         {
-            Navigation.PushAsync(new AddPage());
+            Navigation.PushAsync(new AddPage(AnimalsCol));
         }
         private void AnimalTap()
         {
             if (SelectedAnimal == null)
                 return;
-            Navigation.PushAsync(new AddPage(SelectedAnimal));
+            Navigation.PushAsync(new AddPage(SelectedAnimal, AnimalsCol));
             SelectedAnimal = null;
         }
     }
