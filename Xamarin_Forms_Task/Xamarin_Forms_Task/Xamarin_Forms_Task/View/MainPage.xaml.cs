@@ -9,6 +9,7 @@ using Xamarin.Forms;
 
 namespace Xamarin_Forms_Task
 {
+    //Comment
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
