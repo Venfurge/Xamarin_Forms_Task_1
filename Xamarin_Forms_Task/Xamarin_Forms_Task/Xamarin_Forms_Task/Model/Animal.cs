@@ -40,7 +40,7 @@ namespace Xamarin_Forms_Task
             name = "";
             imageUrl = "";
             description = "";
-            data = new DateTime();
+            data = data.Date;
             mark = 0;
         }
     }

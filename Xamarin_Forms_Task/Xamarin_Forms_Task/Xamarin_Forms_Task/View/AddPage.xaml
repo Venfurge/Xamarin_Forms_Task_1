@@ -81,7 +81,14 @@
                    Placeholder="Mark"
                    Style="{StaticResource EntryVisibilityStyle}"
                    Text="{Binding Mark}"/>
-
+            
+            <DatePicker Grid.Column="0" Grid.Row="4"
+                   MinimumDate="{Binding MinDate}"
+                   MaximumDate="{Binding MaxDate}"
+                   Date="{Binding Data}" 
+                   IsEnabled="{Binding Visibility}"
+                   IsVisible="{Binding Visibility}"/>
+            
             <Button Grid.Column="0" Grid.Row="5"
                    Text="Save"
                    IsEnabled="{Binding Visibility}"
