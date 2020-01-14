@@ -38,6 +38,33 @@ namespace Xamarin_Forms_Task
                 OnPropertyChanged("ImageUrl");
             }
         }
+        public string Description
+        {
+            get => Animal.Description;
+            set 
+            {
+                Animal.Description = value;
+                OnPropertyChanged("Description");
+            }
+        }
+        public DateTime Data
+        {
+            get => Animal.Data;
+            set
+            {
+                Animal.Data = value;
+                OnPropertyChanged("Data");
+            }
+        }
+        public uint Mark
+        {
+            get => Animal.Mark;
+            set 
+            { 
+                Animal.Mark = value;
+                OnPropertyChanged("Mark");
+            }
+        }
         public AddPageVM(ObservableCollection<Animal> Animals, INavigation navigation)
         {
             Visibility = true;

@@ -5,6 +5,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Xamarin_Forms_Task.AddPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#000000" />
+                <Setter Property="BackgroundColor" Value="#80CBC4" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="IsVisible" Value="{Binding Enability}"/>
+                <Setter Property="IsEnabled" Value="{Binding Enability}"/>
+            </Style>
+            <Style x:Key="EntryVisibilityStyle" TargetType="Entry">
+                <Setter Property="IsVisible" Value="{Binding Visibility}"/>
+                <Setter Property="IsEnabled" Value="{Binding Visibility}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid Padding="10">
 
@@ -13,37 +28,61 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-
+            
             <Label Grid.Column="0" Grid.Row="0"
+                   Style="{StaticResource LabelStyle}"
                    Text="{Binding Name}"
-                   VerticalTextAlignment="Center"
-                   HorizontalTextAlignment="Center"
-                   TextDecorations="Underline"
-                   TextColor="#000000"
-                   FontSize="Large"
-                   IsVisible="{Binding Enability}"
-                   IsEnabled="{Binding Enability}"/>
-            <Image Grid.Column="0" Grid.Row="1"
+                   TextDecorations="Underline"/>
+            
+            <Label Grid.Column="0" Grid.Row="1"
+                   Style="{StaticResource LabelStyle}"
+                   Text="{Binding Description}"/>
+            
+            <Image Grid.Column="0" Grid.Row="3"
+                   HorizontalOptions="Start"
                    Source="{Binding ImageUrl}"
                    IsVisible="{Binding Enability}"
                    IsEnabled="{Binding Enability}"/>
-            <Button Grid.Column="0" Grid.Row="2"
+
+            <Label Grid.Column="0" Grid.Row="2"
+                   Style="{StaticResource LabelStyle}"
+                   Text="{Binding Data, StringFormat = '{0:MM/d/yyyy}'}"/>
+
+            <Label Grid.Column="0" Grid.Row="4"
+                   Style="{StaticResource LabelStyle}"
+                   Text="{Binding Mark}"/>
+
+            <Button Grid.Column="0" Grid.Row="5"
                    Text="Delete"
                    IsVisible="{Binding Enability}"
                    IsEnabled="{Binding Enability}"
                    Command="{Binding DeleteAnimalCommand}"/>
+            
             <Entry Grid.Column="0" Grid.Row="0"
                    Placeholder="Name" 
-                   IsEnabled="{Binding Visibility}"
-                   IsVisible="{Binding Visibility}"
+                   Style="{StaticResource EntryVisibilityStyle}"
                    Text="{Binding Name}"/>
+            
             <Entry Grid.Column="0" Grid.Row="1"
+                   Placeholder="Description" 
+                   Style="{StaticResource EntryVisibilityStyle}"
+                   Text="{Binding Description}"/>
+            
+            <Entry Grid.Column="0" Grid.Row="2"
                    Placeholder="ImageUrl"
-                   IsEnabled="{Binding Visibility}"
-                   IsVisible="{Binding Visibility}"
+                   Style="{StaticResource EntryVisibilityStyle}"
                    Text="{Binding ImageUrl}"/>
-            <Button Grid.Column="0" Grid.Row="2"
+
+            <Entry Grid.Column="0" Grid.Row="3"
+                   Placeholder="Mark"
+                   Style="{StaticResource EntryVisibilityStyle}"
+                   Text="{Binding Mark}"/>
+
+            <Button Grid.Column="0" Grid.Row="5"
                    Text="Save"
                    IsEnabled="{Binding Visibility}"
                    IsVisible="{Binding Visibility}"
