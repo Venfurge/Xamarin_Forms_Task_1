@@ -6,24 +6,18 @@
              mc:Ignorable="d"
              x:Class="Xamarin_Forms_Task.MainPage">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding CreateAnimalCommand}" IconImageSource="plus.png"/>
+    </ContentPage.ToolbarItems>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="#d57799" Grid.Column="0" Grid.Row="0">
-            <Button Text="+" FontSize="30" TextColor="#535353"    
-                    Padding="0"
-                    WidthRequest="50"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="EndAndExpand"
-                    VerticalOptions="CenterAndExpand"
-                    Command="{Binding CreateAnimalCommand}"/>
-        </StackLayout>
-        <CollectionView Grid.Column="0" Grid.Row="1" 
+        <CollectionView Grid.Column="0" Grid.Row="0" 
                         ItemsSource="{Binding AnimalsCol}"
                         SelectionMode="Single"
                         SelectedItem="{Binding SelectedAnimal}"
